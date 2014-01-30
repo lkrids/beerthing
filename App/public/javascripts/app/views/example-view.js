@@ -15,13 +15,15 @@ App.Views = App.Views || {};
 				client_id: '4f537976a8bc35f6f369aa1b191c2f14'
 			});
 
-			var track_url = 'http://soundcloud.com/forss/flickermood';
+			
 			var opts = {
 				auto_play: true,
 				iframe: true
 			};
 
-			SC.oEmbed(track_url, opts, function(oEmbed) {
+			var track = App.Helpers.SoundCloud.find(0);
+
+			SC.oEmbed(track, opts, function(oEmbed) {
 				$('#music').html(oEmbed.html);
 			});
 			
