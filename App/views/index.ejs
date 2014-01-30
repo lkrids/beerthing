@@ -7,17 +7,24 @@
   <body>
     <h1>Beer Vision</h1>
     <p>What's your beers muscial personality? Take a photo your favoriate beer and we will find the best possible song for it based on <a href="http://en.wikipedia.org/wiki/Beer_measurement#Colour">color</a>.</p>
-  
-    <div class="content-container">
-      <canvas id="canvas" width="300" height="600"></canvas>
-    </div>
-
-    <div id="img-placeholder"></div>
 
 
     <input type="file" id="file-input">
 
-    <div id="music"></div>
+    <div class="container">
+      <div class="left-col">
+
+        <div class="content-container">
+          <canvas id="canvas" width="300" height="600"></canvas>
+        </div>
+
+        <div id="img-placeholder"></div>
+      </div>
+
+      <div class="right-col">
+        <div id="music"></div>
+      </div>
+    </div>
 
   <script src="javascripts/bower_components/jquery/jquery.min.js"></script>
    <script>

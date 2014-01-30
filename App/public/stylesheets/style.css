@@ -29,3 +29,16 @@ a {
 	width: 250px;
 	height: 80px;
 }
+
+.container { 
+  margin: 20px 0 0 0;
+  overflow: hidden; 
+}
+
+.left-col,
+.right-col {
+  float: left;
+}
+.left-col {
+  margin: 0 50px 0 0;
+}
