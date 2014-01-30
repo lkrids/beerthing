@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Take a photo with your camera</p>
+
+
+    <div class="content-container">
+      <canvas id="canvas" width="300" height="600"></canvas>
+    </div>
+
+    <div id="img-placeholder"></div>
+
+
+    <input type="file" id="file-input">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+      $(function() {
+        $('#file-input').change(function(e) {
+          var file = e.target.files[0],
+          imageType = /image.*/;
+
+          if (!file.type.match(imageType))
+          return;
+
+          var reader = new FileReader();
+          reader.onload = fileOnload;
+          reader.readAsDataURL(file);        
+        });
+
+        function fileOnload(e) {
+          var $img = $('<img>', { src: e.target.result });
+          var canvas = $('#canvas')[0];
+          var context = canvas.getContext('2d');
+
+          $img.load(function() {
+
+            context.drawImage(this, 0, 0);
+
+          });
+        }
+
+        function componentToHex(c) {
+          var hex = c.toString(16);
+          return hex.length == 1 ? "0" + hex : hex;
+        }
+
+        function rgbToHex(r, g, b) {
+          return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+        }
+
+        $("#canvas").on("click", function(event){
+          var rawData = $(this)[0].getContext('2d').getImageData(event.offsetX, event.offsetY, 1, 1).data;
+          console.log(rawData);
+          console.log(event.offsetX, event.offsetY);
+          var hex = rgbToHex(rawData[0], rawData[1], rawData[2], rawData[3]);
+          console.log("hex: "+hex);
+
+          console.log("perceived: "+Math.sqrt( 0.241*rawData[0]^2 + 0.691*rawData[1]^2 + 0.068*rawData[2]^2 ));
+
+        });
+
+      });
+    </script>
+
+  </body>
+</html>
+
