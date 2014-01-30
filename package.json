@@ -1,0 +1,25 @@
+{
+  "name": "beerthing",
+  "version": "0.0.1",
+  "description": "beer... thing",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/corbanb/beerthing.git"
+  },
+  "keywords": [
+    "beer",
+    "thing"
+  ],
+  "author": "corbanb, rochestb, odogg, lkrids",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/corbanb/beerthing/issues"
+  },
+  "dependencies": {
+    "express": "~3.4.8"
+  }
+}

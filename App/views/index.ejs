@@ -1,20 +1,79 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>Beer Vision</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h1>Beer Vision</h1>
+    <p>What's your beers muscial personality? Take a photo your favoriate beer and we will find the best possible song for it based on <a href="http://en.wikipedia.org/wiki/Beer_measurement#Colour">color</a>.</p>
 
+    <input type="file" id="file-input">
 
-    <p>Take a photo with your camera</p>
-  
-	<ul id="recos">
+    <div class="container">
+      <div class="left-col">
 
+        <div class="content-container">
+          <canvas id="canvas" width="300" height="600"></canvas>
+        </div>
+
+        <div id="img-placeholder"></div>
+      </div>
+
+      <div class="left-col">
+        <div id="music"></div>
+      </div>
+      <div class="right-col">
+        <ul id="recos">
 
 	</ul>
+      </div>
+      
+    </div>
+
+  <script src="javascripts/bower_components/jquery/jquery.min.js"></script>
+   <script>
+      $(function() {
+        $('#file-input').change(function(e) {
+          var file = e.target.files[0],
+          imageType = /image.*/;
+
+          if (!file.type.match(imageType))
+          return;
+
+          var reader = new FileReader();
+          reader.onload = fileOnload;
+          reader.readAsDataURL(file);        
+        });
+
+      });
+
+      function fileOnload(e) {
+          var $img = $('<img>', { src: e.target.result });
+          var canvas = $('#canvas')[0];
+          var context = canvas.getContext('2d');
+
+          $img.load(function() {
+
+            context.drawImage(this, 0, 0);
+
+          });
+        }
+
+        function componentToHex(c) {
+          var hex = c.toString(16);
+          return hex.length == 1 ? "0" + hex : hex;
+        }
+
+        function rgbToHex(r, g, b) {
+          return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+        }
+
+
+
+    </script>
+
+	
   <script id="app-settings" type="application/json">
       {
         "isMobile": "",
@@ -24,9 +83,12 @@
   </script>
 
   <!-- 3rd Party -->
-  <script src="javascripts/bower_components/jquery/jquery.min.js"></script>
+  
   <script src="javascripts/bower_components/underscore/underscore-min.js"></script>
   <script src="javascripts/bower_components/backbone/backbone-min.js"></script>
+  <script src="http://connect.soundcloud.com/sdk.js"></script>
+  
+  <script src="javascripts/app/helpers/soundcloud-helper.js"></script>
 
 	<script src="javascripts/app/collections/untapped.js"></script>
   
@@ -37,5 +99,8 @@
 
   <!-- App -->
    <script src="javascripts/app/app.js"></script>
+
+  
+
   </body>
 </html>

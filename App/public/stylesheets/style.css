@@ -1,8 +1,44 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
+  width: 100%;
+}
+
+.content-container {
+  max-width: 700px;
+}
+
+#img-placeholder {
+  max-width: 700px;
+  position: absolute;
+  top: -100%;
+  left: -100%;
+}
+#img-placeholder img {
+  display: block;
+  max-width: 100%;
 }
 
 a {
   color: #00B7FF;
+}
+
+#music {
+	display: block;
+	width: 250px;
+	height: 80px;
+}
+
+.container { 
+  margin: 20px 0 0 0;
+  overflow: hidden; 
+}
+
+.left-col,
+.right-col {
+  float: left;
+}
+.left-col {
+  margin: 0 50px 0 0;
 }
