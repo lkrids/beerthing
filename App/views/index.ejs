@@ -8,10 +8,28 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
 
-	<script src="javascripts/bower_components/jquery/jquery.min.js"></script>
-	<script src="javascripts/bower_components/underscore/underscore-min.js"></script>
-	<script src="javascripts/bower_components/backbone/backbone-min.js"></script>
-    
+
     <p>Take a photo with your camera</p>
+  
+
+  <script id="app-settings" type="application/json">
+      {
+        "isMobile": "",
+        "gaAccountId": "GA_ACCOUNT_ID_HERE",
+        "fbAccountId": "FB_ACCOUNT_ID_HERE"
+      }
+  </script>
+
+  <!-- 3rd Party -->
+  <script src="javascripts/bower_components/jquery/jquery.min.js"></script>
+  <script src="javascripts/bower_components/underscore/underscore-min.js"></script>
+  <script src="javascripts/bower_components/backbone/backbone-min.js"></script>
+
+  <!-- Views -->
+  <script src="javascripts/app/views/example-view.js"></script>
+  <script src="javascripts/app/views/app-view.js"></script>
+
+  <!-- App -->
+   <script src="javascripts/app/app.js"></script>
   </body>
 </html>
