@@ -7,7 +7,7 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
-
+    <div id="music"></div>
 
     <p>Take a photo with your camera</p>
   
@@ -24,6 +24,9 @@
   <script src="javascripts/bower_components/jquery/jquery.min.js"></script>
   <script src="javascripts/bower_components/underscore/underscore-min.js"></script>
   <script src="javascripts/bower_components/backbone/backbone-min.js"></script>
+  <script src="http://connect.soundcloud.com/sdk.js"></script>
+  
+  <script src="javascripts/app/helpers/soundcloud-helper.js"></script>
 
   <!-- Views -->
   <script src="javascripts/app/views/example-view.js"></script>
@@ -31,5 +34,8 @@
 
   <!-- App -->
    <script src="javascripts/app/app.js"></script>
+
+  
+
   </body>
 </html>
